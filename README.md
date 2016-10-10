@@ -60,11 +60,11 @@ TODO
 * [electron-packager](https://www.npmjs.com/package/electron-packager)
 * [wine](https://www.npmjs.com/package/wine-darwin)
 * [devtron](https://www.npmjs.com/package/devtron)
+* [signcode](https://www.npmjs.com/package/signcode)
 
 # TODO
 
 * Signing of application
-
 
 
 # Special thanks
