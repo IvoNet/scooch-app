@@ -57,4 +57,9 @@ TODO
 * [Snazzy](https://www.npmjs.com/package/snazzy)
 * [chai](https://www.npmjs.com/package/chai) / [chai docs](http://chaijs.com) / [chai-as-promised](https://www.npmjs.com/package/chai-as-promised)
 * [spectron](https://www.npmjs.com/package/spectron)
+* [electron-packager](https://www.npmjs.com/package/electron-packager)
+* [wine](https://www.npmjs.com/package/wine-darwin)
 
+# TODO
+
+* Signing of application

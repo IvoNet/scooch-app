@@ -7,8 +7,10 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --debug",
-    "lint": "standard --fix --verbose | snazzy --verbose",
-    "test": "mocha tests && npm run lint"
+    "lint": "standard --fix --verbose | snazzy",
+    "test": "mocha tests && npm run lint",
+    "pack-mac": "electron-packager . --platform=darwin --arch=x64 --asar --overwrite --icon=assets/app-icon/mac/app.icns --prune=true --ignore .idea --ignore .tmp --ignore build --out=out  --extend-info=assets/mac/info.plist",
+    "pack-win": "electron-packager . Scooch  --overwrite --platform=win32 --arch=ia32 --asar --icon=assets/app-icon/win/app.ico --prune=true --ignore .idea --ignore .tmp --out=out --version-string.CompanyName='IvoNet.nl' --version-string.FileDescription='Scooch - Presenting smarter' --version-string.ProductName='Scooch'"
   },
   "repository": {
     "type": "git",
@@ -33,10 +35,12 @@
     "chai": "^3.5.0",
     "chai-as-promised": "^6.0.0",
     "electron": "^1.4.3",
+    "electron-packager": "^8.1.0",
     "mocha": "^3.1.1",
     "snazzy": "^5.0.0",
     "spectron": "^3.4.0",
-    "standard": "^8.3.0"
+    "standard": "^8.3.0",
+    "wine-darwin": "^1.9.17-1"
   },
   "standard": {
     "env": {

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ Copyright 2016 Ivo Woltring <WebMaster@ivonet.nl>
   ~
@@ -15,21 +15,21 @@
   ~ limitations under the License.
   -->
 
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Scooch</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
-
-  <script>
-    // You can also require other files to run in this process
-//    require('src/js/renderer.js')
-  </script>
-</html>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>Scooch</string>
+      </array>
+      <key>CFBundleURLName</key>
+      <string>Scooch</string>
+    </dict>
+  </array>
+  <key>ScoochTeamID</key>
+  <string>RANDOM123TODO</string>
+</dict>
+</plist>
