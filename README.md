@@ -1,7 +1,7 @@
 # Scooch - Presenting smarter
 
 
-
+Is a Powerpoint / KeyNote like slide show app but then in the browser. Everybody has a browser ;-)
 
 
 ## Folder Structure
@@ -10,7 +10,7 @@
 #### `assets`
 This directory contains assets for the app itself: CSS, fonts, images and shared JavaScript libraries or helpers.
 
-#### `main-process`
+#### `app`
 This directory contains sub folders for each demo section that requires JavaScript in the main process. This structure is mirrored in the `renderer-process` directory.
 
 The `main.js` file, located in the root, takes each `.js` file in these directories and executes them.
@@ -38,3 +38,23 @@ This file is required when using `npm` and Electron.js. It contains details on t
 
 #### Docs
 The files: `CODE_OF_CONDUCT`, `README`, `docs` and `CONTRIBUTING` files make up the documentation for the project.
+
+#### `test`
+This folder contains the tests for the app.
+
+## Building / Releasing / Packaging 
+
+TODO
+
+## Using
+
+TODO
+
+
+## Libraries
+
+* [Standard](https://www.npmjs.com/package/standard)
+* [Snazzy](https://www.npmjs.com/package/snazzy)
+* [chai](https://www.npmjs.com/package/chai) / [chai docs](http://chaijs.com) / [chai-as-promised](https://www.npmjs.com/package/chai-as-promised)
+* [spectron](https://www.npmjs.com/package/spectron)
+

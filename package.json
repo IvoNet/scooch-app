@@ -1,10 +1,14 @@
 {
-  "name": "Scooch",
+  "name": "scooch-app",
+  "productName": "Scooch",
   "version": "0.0.1",
   "description": "Scooch - Presenting smarter",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "electron . --debug",
+    "lint": "standard --fix --verbose | snazzy --verbose",
+    "test": "mocha tests && npm run lint"
   },
   "repository": {
     "type": "git",
@@ -26,6 +30,17 @@
     }
   ],
   "devDependencies": {
-    "electron": "^1.4.3"
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "electron": "^1.4.3",
+    "mocha": "^3.1.1",
+    "snazzy": "^5.0.0",
+    "spectron": "^3.4.0",
+    "standard": "^8.3.0"
+  },
+  "standard": {
+    "env": {
+      "mocha": true
+    }
   }
 }
