@@ -10,11 +10,13 @@
     "lint": "standard --fix --verbose | snazzy",
     "test": "mocha tests && npm run lint",
     "sign-exe": "signcode ./out/Scooch-win32-ia32/Scooch.exe --cert .cert/cert.p12 --name 'Scooch' --url 'https://github.com/IvoNet/scooch-app'",
+    "sign-installer": "signcode ./out/windows-installer/ScoochSetup.exe --cert .cert/cert.p12 --name 'Scooch' --url 'https://github.com/IvoNet/scooch-app'",
     "pack-mac": "electron-packager . --platform=darwin --arch=x64 --asar --overwrite --icon=assets/app-icon/mac/app.icns --prune=true --ignore .idea --ignore .tmp --ignore build --out=out  --extend-info=assets/mac/info.plist",
     "pack-win": "electron-packager . Scooch  --overwrite --platform=win32 --arch=ia32 --asar --icon=assets/app-icon/win/app.ico --prune=true --ignore .idea --ignore .tmp --out=out --version-string.CompanyName='IvoNet.nl' --version-string.FileDescription='Scooch - Presenting smarter' --version-string.ProductName='Scooch'",
     "pack-linux": "electron-packager . --platform=linux --arch=x64 --asar --overwrite --icon=assets/app-icon/png/64.png --prune=true --ignore .idea --ignore .tmp --out=out",
     "package": "npm run pack-mac && npm run pack-win && npm run pack-linux",
-    "clean": "rm -rf ./out"
+    "installer": "node ./script/installer.js",
+    "clean": "node ./script/clean.js"
   },
   "repository": {
     "type": "git",
@@ -41,7 +43,9 @@
     "devtron": "^1.4.0",
     "electron": "^1.4.3",
     "electron-packager": "^8.1.0",
+    "electron-winstaller": "^2.3.4",
     "mocha": "^3.1.1",
+    "rimraf": "^2.5.4",
     "signcode": "^0.5.0",
     "snazzy": "^5.0.0",
     "spectron": "^3.4.0",

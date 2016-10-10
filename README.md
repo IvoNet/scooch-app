@@ -61,10 +61,12 @@ TODO
 * [wine](https://www.npmjs.com/package/wine-darwin)
 * [devtron](https://www.npmjs.com/package/devtron)
 * [signcode](https://www.npmjs.com/package/signcode)
+* [rimraf](https://www.npmjs.com/package/rimraf)
+* [electron-winstaller](https://www.npmjs.com/package/electron-winstaller)
 
 # TODO
 
-* Signing of application
+* [TODO](./TODO.md)
 
 
 # Special thanks
