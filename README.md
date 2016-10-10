@@ -59,6 +59,7 @@ TODO
 * [spectron](https://www.npmjs.com/package/spectron)
 * [electron-packager](https://www.npmjs.com/package/electron-packager)
 * [wine](https://www.npmjs.com/package/wine-darwin)
+* [devtron](https://www.npmjs.com/package/devtron)
 
 # TODO
 
