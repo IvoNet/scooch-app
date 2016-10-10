@@ -6,7 +6,6 @@
 
 ## Folder Structure
 
-![Diagram of App Structure and Operations](/assets/img/diagram.png)
 
 #### `assets`
 This directory contains assets for the app itself: CSS, fonts, images and shared JavaScript libraries or helpers.
