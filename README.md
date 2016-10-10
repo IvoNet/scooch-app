@@ -64,3 +64,9 @@ TODO
 # TODO
 
 * Signing of application
+
+
+
+# Special thanks
+
+* Timothy for your Icons ;-)

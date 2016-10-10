@@ -32,7 +32,7 @@
     {
       "name": "Philippe Tjon-A-Hen",
       "url": "https://github.com/pnmtjonahen"
-    }
+    },
   ],
   "devDependencies": {
     "chai": "^3.5.0",
