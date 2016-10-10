@@ -46,10 +46,6 @@ This folder contains the tests for the app.
 
 TODO
 
-## Using
-
-TODO
-
 
 ## Libraries
 
