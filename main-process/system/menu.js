@@ -16,7 +16,7 @@
 
 const {Menu} = require('electron')
 
-//noinspection JSUnusedLocalSymbols
+// noinspection JSUnusedLocalSymbols
 const template = [
   {
     label: 'File',
@@ -41,8 +41,8 @@ const template = [
       {
         label: 'Reload',
         accelerator: 'CmdOrCtrl+R',
-         click (item, focusedWindow) {
-            if (focusedWindow) focusedWindow.reload()
+        click (item, focusedWindow) {
+          if (focusedWindow) focusedWindow.reload()
         }
       },
       {

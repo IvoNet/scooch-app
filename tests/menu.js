@@ -14,15 +14,4 @@
  * limitations under the License.
  */
 
-var path = require('path')
-var rimraf = require('rimraf')
-
-deleteOutputFolder()
-
-function deleteOutputFolder () {
-  return new Promise((resolve, reject) => {
-    rimraf(path.join(__dirname, '..', 'out'), (error) => {
-      error ? reject(error) : resolve()
-    })
-  })
-}
+console.log('testing the menu is not jet supported by electron and spectron')
