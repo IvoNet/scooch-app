@@ -49,6 +49,8 @@ TODO
 
 ## Libraries
 
+### Development
+
 * [Standard](https://www.npmjs.com/package/standard)
 * [Snazzy](https://www.npmjs.com/package/snazzy)
 * [chai](https://www.npmjs.com/package/chai) / [chai docs](http://chaijs.com) / [chai-as-promised](https://www.npmjs.com/package/chai-as-promised)
@@ -59,6 +61,10 @@ TODO
 * [signcode](https://www.npmjs.com/package/signcode)
 * [rimraf](https://www.npmjs.com/package/rimraf)
 * [electron-winstaller](https://www.npmjs.com/package/electron-winstaller)
+
+### Dependency
+* [glob](https://www.npmjs.com/package/glob)
+
 
 # TODO
 

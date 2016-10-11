@@ -56,5 +56,8 @@
     "env": {
       "mocha": true
     }
+  },
+  "dependencies": {
+    "glob": "^7.1.1"
   }
 }
