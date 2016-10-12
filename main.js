@@ -111,7 +111,7 @@ function makeSingleInstance () {
 function loadApp () {
   var files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
   files.forEach(function (file) {
-    console.log(file)
+    console.log("Loading:", file)
     require(file)
   })
 }
