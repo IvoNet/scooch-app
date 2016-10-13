@@ -29,14 +29,14 @@ const debug = /--debug/.test(process.argv[2])
 let mainWindow
 
 function createWindow() {
-   var shouldQuit = makeSingleInstance()
+   let shouldQuit = makeSingleInstance()
    if (shouldQuit) {
       return app.quit()
    }
 
    loadApp()
 
-   var windowOptions = {
+   let windowOptions = {
       width: 1080,
       minWidth: 680,
       height: 840,
@@ -95,7 +95,6 @@ function makeSingleInstance() {
    if (process.mas) {
       return false
    }
-
    return app.makeSingleInstance(() => {
       if (mainWindow) {
          if (mainWindow.isMinimized()) {
@@ -107,7 +106,7 @@ function makeSingleInstance() {
 }
 
 function loadApp() {
-   var files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
+   let files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
    files.forEach((file) => {
       console.log("Loading:", file)
       require(file)
