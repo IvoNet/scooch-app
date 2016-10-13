@@ -16,9 +16,7 @@
 
 const glob = require('glob')
 const path = require('path')
-const electron = require('electron')
-const app = electron.app
-const BrowserWindow = electron.BrowserWindow
+const {app, BrowserWindow} = require('electron')
 
 if (process.mas) {
   app.setName('Scooch')
