@@ -34,11 +34,11 @@ var reveal_config = {
       ],
       background: [
          'rgba(127,127,127,.1)',
-         'resource:///plugins/chalkboard/img/blackboard.png'
+         'resource:///assets/plugins/chalkboard/img/blackboard.png'
       ],
       pen: [
-         'resource:///plugins/chalkboard/img/boardmarker.png',
-         'resource:///plugins/chalkboard/img/chalk.png'
+         'resource:///assets/plugins/chalkboard/img/boardmarker.png',
+         'resource:///assets/plugins/chalkboard/img/chalk.png'
       ]
    },
 
@@ -84,14 +84,14 @@ var reveal_config = {
       {src: 'resource:///node_modules/reveal.js/plugin/notes/notes.js'},
       {src: 'resource:///node_modules/reveal.js/plugin/math/math.js', async: true},
       {
-         src: 'resource:///plugins/reveal-code-focus/reveal-code-focus.js', async: true, callback: function () {
+         src: 'resource:///assets/plugins/reveal-code-focus/reveal-code-focus.js', async: true, callback: function () {
          RevealCodeFocus();
       }
       },
-      {src: 'resource:///plugins/chalkboard/chalkboard.js'},
-      {src: 'resource:///plugins/spreadsheet/spreadsheet.js'},
-      {src: 'resource:///plugins/mathsvg/math.js', async: true},
-      {src: 'resource:///plugins/jump/jump.js', async: true}
+      {src: 'resource:///assets/plugins/chalkboard/chalkboard.js'},
+      {src: 'resource:///assets/plugins/spreadsheet/spreadsheet.js'},
+      {src: 'resource:///assets/plugins/mathsvg/math.js', async: true},
+      {src: 'resource:///assets/plugins/jump/jump.js', async: true}
 
    ],
    keyboard: {

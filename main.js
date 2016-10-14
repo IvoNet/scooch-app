@@ -41,7 +41,10 @@ function initScoochApp() {
       minWidth: 800,
       height: 950,
       minHeight: 600,
-      title: app.getName()
+      title: app.getName(),
+      webPreferences: {
+         webSecurity: false //TODO this is added for the presenter window (s in slide) but did not fix the bug jet
+      }
    }
 
    // Create the browser window.
@@ -62,10 +65,13 @@ function initScoochApp() {
       mainWindow = null
    })
 
+   //retrieve resources because they do not live in the presentation but in the project
    protocol.registerFileProtocol('resource', (request, callback) => {
       const url = request.url.split("?")[0].substr(11);
       callback({path: path.join(__dirname, url)});
    });
+
+   //retrieve template resources
    protocol.registerFileProtocol('template', (request, callback) => {
       const model = require(`${__dirname}/renderer-process/model.js`)
       const arr = request.url.substr(11).split('/');
