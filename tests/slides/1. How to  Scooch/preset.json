@@ -1,1 +1,16 @@
-{"controls":true,"mouseWheel":false,"slideNumber":false,"presenterNotes":true,"center":false,"progress":true,"history":true,"theme":"ivonet","template":"ivonet","transition":"concave","disableChalkboard":true,"replayChalkboard":false,"autoSlide":0,"loop":true}
+{
+  "controls": true,
+  "mouseWheel": false,
+  "slideNumber": false,
+  "presenterNotes": true,
+  "center": false,
+  "progress": true,
+  "history": true,
+  "theme": "ivonet",
+  "template": "ivonet",
+  "transition": "concave",
+  "disableChalkboard": true,
+  "replayChalkboard": false,
+  "autoSlide": 0,
+  "loop": true
+}

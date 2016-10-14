@@ -15,135 +15,135 @@
  */
 
 /**
- * Build a model for scooch, it will contain themes, templates and posible slides.
+ * Build a model for scooch, it will contain themes, templates and possible slides.
  */
 module.exports = {
-   config: {
-      themesDir: `${__dirname}/../tests/templates`,
-      templatesDir: `${__dirname}/../tests/templates`,
-      slidesDir: `${__dirname}/../tests/slides`
-   },
-   buildModel: function () {
-      model = {};
-      model.themes = themes();
+  config: {
+    themesDir: `${__dirname}/../tests/templates`,
+    templatesDir: `${__dirname}/../tests/templates`,
+    slidesDir: `${__dirname}/../tests/slides`
+  },
+  buildModel: function () {
+    model = {}
+    model.themes = themes()
 
-      model.templates = templates();
+    model.templates = templates()
 
-      if (model.templates.length !== 0) {
-         model.template = model.templates[0].file;
-      }
+    if (model.templates.length !== 0) {
+      model.template = model.templates[0].file
+    }
 
-      model.transitions = transitions();
-      model.transition = 'convex';
+    model.transitions = transitions()
+    model.transition = 'convex'
 
-      model.slides = slides();
-      return model;
-   },
-   themes : themes,
-   templates : templates,
-   transitions : transitions,
-   slides : slides
-};
-var path = require("path"),
-     fs = require("fs"),
-     walk = require('fs-walk'),
-     defaultThemesDir = `${__dirname}/../node_modules/reveal.js/css/theme/`;
+    model.slides = slides()
+    return model
+  },
+  themes: themes,
+  templates: templates,
+  transitions: transitions,
+  slides: slides
+}
+var path = require('path'),
+  fs = require('fs'),
+  walk = require('fs-walk'),
+  defaultThemesDir = `${__dirname}/../node_modules/reveal.js/css/theme/`
 
-var model = {};
+var model = {}
 
 /**
  * Get the default reveal.js themes
  * @param {type} files the list of theme files
  *
  */
-function defaultThemes(files) {
-   return files.filter(function (el) {
-      return el.endsWith('.css');
-   }).map(function (el) {
-      return {
-         title: el.replace(".css", ""),
-         file: defaultThemesDir + el
-      };
-   });
+function defaultThemes (files) {
+  return files.filter(function (el) {
+    return el.endsWith('.css')
+  }).map(function (el) {
+    return {
+      title: el.replace('.css', ''),
+      file: defaultThemesDir + el
+    }
+  })
 }
 
 /**
  *
  * Get all the themes (default reveal.js themes + user defined
  */
-function themes() {
-   var themes = [];
-   walk.walkSync(module.exports.config.themesDir, function (basedir, filename, stat) {
-      "use strict";
-      if (filename.endsWith(".css")) {
-         themes.push({
-            title: filename.replace(".css", ""),
-            file: path.join("/", basedir, filename)
-         });
-      }
-   });
-   defaultThemes(fs.readdirSync(defaultThemesDir)).forEach(function (entry) {
-      themes.push(entry);
-   });
+function themes () {
+  var themes = []
+  walk.walkSync(module.exports.config.themesDir, function (basedir, filename, stat) {
+    'use strict'
+    if (filename.endsWith('.css')) {
+      themes.push({
+        title: filename.replace('.css', ''),
+        file: path.join('/', basedir, filename)
+      })
+    }
+  })
+  defaultThemes(fs.readdirSync(defaultThemesDir)).forEach(function (entry) {
+    themes.push(entry)
+  })
 
-   return themes;
+  return themes
 }
 
 /**
  *
  * Get all the templates.
  */
-function templates() {
-   var templates = [];
-   walk.walkSync(module.exports.config.templatesDir, function (basedir, filename, stat) {
-      "use strict";
-      if (filename.endsWith(".html")) {
-         templates.push({
-            title: filename.replace(".html", ""),
-            file: path.join("/", basedir, filename)
-         });
-      }
-   });
-   return templates;
+function templates () {
+  var templates = []
+  walk.walkSync(module.exports.config.templatesDir, function (basedir, filename, stat) {
+    'use strict'
+    if (filename.endsWith('.html')) {
+      templates.push({
+        title: filename.replace('.html', ''),
+        file: path.join('/', basedir, filename)
+      })
+    }
+  })
+  return templates
 }
 
 /**
  *
  * Get all posible transitions. See http://lab.hakim.se/reveal-js/#/transitions
  */
-function transitions() {
-   return [
-      "none",
-      "fade",
-      "slide",
-      "convex",
-      "concave",
-      "zoom"
-   ];
+function transitions () {
+  return [
+    'none',
+    'fade',
+    'slide',
+    'convex',
+    'concave',
+    'zoom'
+  ]
 }
 
 /**
  *
  * Get the defined slides (aka presentations)
  */
-function slides() {
-   var slides = [];
-   walk.walkSync(module.exports.config.slidesDir, (basedir, filename, stat) => {
-      "use strict";
-      if (filename.endsWith(".md")) {
-         var slide = {};
-         slide.title = filename.replace(".md", "");
-         slide.file = path.join("/", basedir, filename);
-         var preset = path.join(basedir, "preset.json");
-         if (fs.existsSync(preset)) {
-            slide.preset = path.join("/", preset);
-         }
-         var chalkboard = path.join(basedir, "chalkboard.json");
-         if (fs.existsSync(chalkboard)) {
-            slide.chalkboard = path.join("/", chalkboard);
-         }
-         slides.push(slide);
+function slides () {
+  var slides = []
+  walk.walkSync(module.exports.config.slidesDir, (basedir, filename, stat) => {
+    'use strict'
+    if (filename.endsWith('.md')) {
+      var slide = {}
+      slide.title = filename.replace('.md', '')
+      slide.file = path.join('/', basedir, filename)
+      var preset = path.join(basedir, 'preset.json')
+      if (fs.existsSync(preset)) {
+        slide.preset = path.join('/', preset)
       }
-   });
-   return slides;
+      var chalkboard = path.join(basedir, 'chalkboard.json')
+      if (fs.existsSync(chalkboard)) {
+        slide.chalkboard = path.join('/', chalkboard)
+      }
+      slides.push(slide)
+    }
+  })
+  return slides
 }

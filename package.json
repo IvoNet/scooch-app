@@ -7,6 +7,8 @@
   "scripts": {
     "start": "electron .",
     "dev": "electron . --debug",
+    "debug": "electron --debug=5858 . --debug",
+    "inspector": "electron-inspector",
     "lint": "standard --fix --verbose | snazzy",
     "test": "mocha tests && npm run lint",
     "sign-exe": "signcode ./out/Scooch-win32-ia32/Scooch.exe --cert .cert/cert.p12 --name 'Scooch' --url 'https://github.com/IvoNet/scooch-app'",
@@ -42,7 +44,9 @@
     "chai-as-promised": "^6.0.0",
     "devtron": "^1.4.0",
     "electron": "1.4.2",
+    "electron-inspector": "^0.1.3",
     "electron-packager": "^8.1.0",
+    "electron-rebuild": "^1.2.1",
     "electron-winstaller": "^2.3.4",
     "mocha": "^3.1.1",
     "rimraf": "^2.5.4",
@@ -67,7 +71,7 @@
     "glob": "^7.1.1",
     "highlight.js": "^9.7.0",
     "jquery": "^3.1.1",
-    "mathjax": "^2.7.0-beta.0",
+    "mathjax": "2.6.1",
     "reveal.js": "^3.3.0"
   }
 }

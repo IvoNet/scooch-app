@@ -16,7 +16,7 @@
 
 const glob = require('glob')
 const path = require('path')
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, protocol} = require('electron')
 
 if (process.mas) {
    app.setName('Scooch')
@@ -28,7 +28,7 @@ const debug = /--debug/.test(process.argv[2])
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow() {
+function initScoochApp() {
    let shouldQuit = makeSingleInstance()
    if (shouldQuit) {
       return app.quit()
@@ -40,7 +40,7 @@ function createWindow() {
       width: 1080,
       minWidth: 800,
       height: 950,
-      minHeight:600,
+      minHeight: 600,
       title: app.getName()
    }
 
@@ -61,12 +61,33 @@ function createWindow() {
       // when you should delete the corresponding element.
       mainWindow = null
    })
+
+   protocol.registerFileProtocol('resource', (request, callback) => {
+      var url = request.url.substr(11);
+      var path2 = path.join(__dirname, url)
+      console.log(path2)
+      callback({path: path2});
+   });
+   protocol.registerFileProtocol('template', (request, callback) => {
+      const model = require(`${__dirname}/renderer-process/model.js`)
+      const arr = request.url.substr(11).split('/');
+      const template = arr[0]
+      const res = arr[1]
+      const templates = model.templates()
+      let pad = "";
+      templates.forEach((element, index, array) => {
+         if (element.title === template) {
+            pad = path.join(path.dirname(element.file), res)
+         }
+      })
+      callback({path: pad});
+   });
 }
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', initScoochApp)
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -81,7 +102,7 @@ app.on('activate', function () {
    // On OS X it's common to re-create a window in the app when the
    // dock icon is clicked and there are no other windows open.
    if (mainWindow === null) {
-      createWindow()
+      initScoochApp()
    }
 })
 
@@ -109,7 +130,7 @@ function makeSingleInstance() {
 function loadApp() {
    let files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
    files.forEach((file) => {
-      console.log("Loading:", file)
+      console.log('Loading:', file)
       require(file)
    })
 }
