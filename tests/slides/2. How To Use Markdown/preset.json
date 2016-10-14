@@ -1,0 +1,15 @@
+{
+  "controls": true,
+  "mouseWheel": true,
+  "slideNumber": false,
+  "presenterNotes": true,
+  "center": false,
+  "progress": true,
+  "history": true,
+  "theme": "ivonet",
+  "template": "ivonet",
+  "transition": "convex",
+  "disableChalkboard": false,
+  "replayChalkboard": false
+
+}

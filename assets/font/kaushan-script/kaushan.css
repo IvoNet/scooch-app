@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'Kaushan Script';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kaushan Script'), local('KaushanScript-Regular'), url(./KaushanScript-Regular.otf) format('opentype');
+}
+
