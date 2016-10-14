@@ -6,3 +6,7 @@ node_modules
 out/
 .tmp/
 assets/img/about_2.png
+tests/templates/codestar
+tests/templates/rabobank
+tests/templates/ordina
+
