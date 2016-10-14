@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-/**
- * Created by ivonet.
- */
-
 (function () {
    angular
         .module('scooch', [])
@@ -29,7 +25,11 @@
    ];
 
    function MainController($window, $filter) {
-      var that = this;
+      const fs = require('fs')
+      const path = require('path')
+      const model = require(`${__dirname}/renderer-process/model.js`)
+
+      let that = this;
 
       that.message = '';
       that.slide = undefined;
@@ -52,8 +52,11 @@
          that.loop = false;
       }
 
-      that.downloadPresets =  () => {
-         var presets = {
+      that.savePresets =  () => {
+         if (that.slide === undefined) {
+            return;
+         }
+         const presets = {
             controls: that.controls,
             mouseWheel: that.mouseWheel,
             slideNumber: that.slideNumber,
@@ -61,32 +64,18 @@
             center: that.center,
             progress: that.progress,
             history: that.history,
-            theme: $filter('filter')(that.model.themes, {file: that.model.theme}, true)[0].title,
-            template: $filter('filter')(that.model.templates, {file: that.model.template}, true)[0].title,
-            transition: that.model.transition,
+            theme: $filter('filter')(that.model.themes, {file: that.theme}, true)[0].title,
+            template: $filter('filter')(that.model.templates, {file: that.template}, true)[0].title,
+            transition: that.transition,
             disableChalkboard: that.disableChalkboard,
             replayChalkboard: that.replayChalkboard,
             autoSlide: that.autoSlide,
             loop: that.loop
          };
-
-         var a = document.createElement('a');
-         document.body.appendChild(a);
-         try {
-            a.download = "preset.json";
-            var blob = new Blob([JSON.stringify(presets)], {type: "application/json"});
-            a.href = window.URL.createObjectURL(blob);
-         } catch (error) {
-            a.innerHTML += " (" + error + ")";
-         }
-         a.click();
-         document.body.removeChild(a);
-         that.dlPreset = false;
+         fs.writeFileSync(path.join(path.dirname(that.slide.file), "preset.json"), JSON.stringify(presets))
+         that.buildModel()
       };
 
-      that.model = {};
-
-      const model = require(`${__dirname}/renderer-process/model.js`)
       that.model = model.buildModel()
       setDefaults()
 
@@ -152,11 +141,11 @@
          newWindow.location = url;
       };
 
-      that.onSelect = function (slide) {
+      that.onSelect = (slide) => {
          setDefaults();
+         that.slide = slide;
          // retrieve preset if available
          if (slide.preset !== undefined) {
-            const fs = require('fs')
             const data = JSON.parse(fs.readFileSync(slide.preset, "utf8"))
 
             if (data.controls !== undefined) {
