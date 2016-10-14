@@ -63,10 +63,8 @@ function initScoochApp() {
    })
 
    protocol.registerFileProtocol('resource', (request, callback) => {
-      var url = request.url.substr(11);
-      var path2 = path.join(__dirname, url)
-      console.log(path2)
-      callback({path: path2});
+      const url = request.url.split("?")[0].substr(11);
+      callback({path: path.join(__dirname, url)});
    });
    protocol.registerFileProtocol('template', (request, callback) => {
       const model = require(`${__dirname}/renderer-process/model.js`)

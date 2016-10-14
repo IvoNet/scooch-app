@@ -73,7 +73,7 @@
         loop: that.loop
       }
       fs.writeFileSync(path.join(path.dirname(that.slide.file), 'preset.json'), JSON.stringify(presets))
-      that.buildModel()
+      // that.model = model.buildModel()
     }
 
     that.model = model.buildModel()

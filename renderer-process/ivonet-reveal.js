@@ -132,9 +132,7 @@ Reveal.addEventListener('ready', function () {
          return true;
       }
       var slideshow = QueryString.slideshow.replace(/\\/g,"/");
-      console.log(slideshow)
       slideshow = slideshow.substr(0, slideshow.lastIndexOf("/")) + '/' + imgsrc;
-      console.log(slideshow)
       $img.attr('src', slideshow)
 
    });
