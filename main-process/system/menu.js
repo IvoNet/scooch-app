@@ -154,4 +154,5 @@ if (process.platform === 'darwin') {
 }
 
 const menu = Menu.buildFromTemplate(template)
-Menu.setApplicationMenu(menu)
+//TODO enable this Menu when no dev tools are needed!
+//Menu.setApplicationMenu(menu)
