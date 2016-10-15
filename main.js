@@ -28,7 +28,7 @@ const debug = /--debug/.test(process.argv[2])
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function initScoochApp() {
+function initScoochApp () {
   let shouldQuit = makeSingleInstance()
   if (shouldQuit) {
     return app.quit()
@@ -117,7 +117,7 @@ app.on('activate', function () {
 //
 // Returns true if the current version of the app should quit instead of
 // launching.
-function makeSingleInstance() {
+function makeSingleInstance () {
   if (process.mas) {
     return false
   }
@@ -131,7 +131,7 @@ function makeSingleInstance() {
   })
 }
 
-function loadApp() {
+function loadApp () {
   let files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
   files.forEach((file) => {
     console.log('Loading:', file)
