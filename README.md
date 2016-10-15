@@ -13,7 +13,7 @@ This directory contains assets for the app itself: CSS, fonts, images and shared
 #### `main-process`
 This directory contains sub folders for each demo section that requires JavaScript in the main process. This structure is mirrored in the `renderer-process` directory.
 
-The `main.js` file, located in the root, takes each `.js` file in these directories and executes them.
+The main.js` file, located in the root, takes each `.js` file in these directories and executes them.
 
 #### `renderer-process`
 This directory contains sub folders for each demo section that requires JavaScript in the renderer process. This structure is mirrored in the `main-process` directory.

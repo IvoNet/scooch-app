@@ -15,6 +15,7 @@
  */
 
 (function () {
+  const angular = require('angular')
   angular
         .module('scooch', [])
         .controller('mainController', MainController)

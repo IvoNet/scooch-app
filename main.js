@@ -19,7 +19,7 @@ const path = require('path')
 const {app, BrowserWindow, protocol} = require('electron')
 
 if (process.mas) {
-   app.setName('Scooch')
+  app.setName('Scooch')
 }
 
 const debug = /--debug/.test(process.argv[2])
@@ -29,63 +29,63 @@ const debug = /--debug/.test(process.argv[2])
 let mainWindow
 
 function initScoochApp() {
-   let shouldQuit = makeSingleInstance()
-   if (shouldQuit) {
-      return app.quit()
-   }
+  let shouldQuit = makeSingleInstance()
+  if (shouldQuit) {
+    return app.quit()
+  }
 
-   loadApp()
+  loadApp()
 
-   let windowOptions = {
-      width: 1080,
-      minWidth: 800,
-      height: 950,
-      minHeight: 600,
-      title: app.getName(),
-      webPreferences: {
-         webSecurity: false //TODO this is added for the presenter window (s in slide) but did not fix the bug jet
-      }
-   }
+  let windowOptions = {
+    width: 1080,
+    minWidth: 800,
+    height: 950,
+    minHeight: 600,
+    title: app.getName(),
+    webPreferences: {
+      webSecurity: false // TODO this is added for the presenter window (s in slide) but did not fix the bug jet
+    }
+  }
 
    // Create the browser window.
-   mainWindow = new BrowserWindow(windowOptions)
-   mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow = new BrowserWindow(windowOptions)
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
 
-   if (debug) {
-      mainWindow.webContents.openDevTools()
-      mainWindow.maximize()
-      require('devtron').install()
-   }
+  if (debug) {
+    mainWindow.webContents.openDevTools()
+    mainWindow.maximize()
+    require('devtron').install()
+  }
 
    // Emitted when the window is closed.
-   mainWindow.on('closed', function () {
+  mainWindow.on('closed', function () {
       // Dereference the window object, usually you would store windows
       // in an array if your app supports multi windows, this is the time
       // when you should delete the corresponding element.
-      mainWindow = null
-   })
+    mainWindow = null
+  })
 
-   //retrieve resources because they do not live in the presentation but in the project
-   protocol.registerFileProtocol('resource', (request, callback) => {
-      const url = request.url.split("?")[0].substr(11);
-      callback({path: path.join(__dirname, url)});
-   });
+  // retrieve resources because they do not live in the presentation but in the project
+  protocol.registerFileProtocol('resource', (request, callback) => {
+    const url = request.url.split('?')[0].substr(11)
+    callback({path: path.join(__dirname, url)})
+  })
 
-   //retrieve template resources
-   protocol.registerFileProtocol('template', (request, callback) => {
-      const model = require(`${__dirname}/renderer-process/model.js`)
-      const arr = request.url.substr(11).split('/');
-      const template = arr[0]
-      const res = arr[1]
-      const templates = model.templates()
-      let pad = "";
-      templates.forEach((element, index, array) => {
-         if (element.title === template) {
-            pad = path.join(path.dirname(element.file), res)
-         }
-      })
-      callback({path: pad});
-   });
+  // retrieve template resources
+  protocol.registerFileProtocol('template', (request, callback) => {
+    const model = require(`${__dirname}/renderer-process/model.js`)
+    const arr = request.url.substr(11).split('/')
+    const template = arr[0]
+    const res = arr[1]
+    const templates = model.templates()
+    let pad = ''
+    templates.forEach((element, index, array) => {
+      if (element.title === template) {
+        pad = path.join(path.dirname(element.file), res)
+      }
+    })
+    callback({path: pad})
+  })
 }
 
 // This method will be called when Electron has finished
@@ -97,17 +97,17 @@ app.on('ready', initScoochApp)
 app.on('window-all-closed', function () {
    // On OS X it is common for applications and their menu bar
    // to stay active until the user quits explicitly with Cmd + Q
-   if (process.platform !== 'darwin') {
-      app.quit()
-   }
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
 
 app.on('activate', function () {
    // On OS X it's common to re-create a window in the app when the
    // dock icon is clicked and there are no other windows open.
-   if (mainWindow === null) {
-      initScoochApp()
-   }
+  if (mainWindow === null) {
+    initScoochApp()
+  }
 })
 
 // Make this app a single instance app.
@@ -118,25 +118,25 @@ app.on('activate', function () {
 // Returns true if the current version of the app should quit instead of
 // launching.
 function makeSingleInstance() {
-   if (process.mas) {
-      return false
-   }
-   return app.makeSingleInstance(() => {
-      if (mainWindow) {
-         if (mainWindow.isMinimized()) {
-            mainWindow.restore()
-         }
-         mainWindow.focus()
+  if (process.mas) {
+    return false
+  }
+  return app.makeSingleInstance(() => {
+    if (mainWindow) {
+      if (mainWindow.isMinimized()) {
+        mainWindow.restore()
       }
-   })
+      mainWindow.focus()
+    }
+  })
 }
 
 function loadApp() {
-   let files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
-   files.forEach((file) => {
-      console.log('Loading:', file)
-      require(file)
-   })
+  let files = glob.sync(path.join(__dirname, 'main-process/**/*.js'))
+  files.forEach((file) => {
+    console.log('Loading:', file)
+    require(file)
+  })
 }
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

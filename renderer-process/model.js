@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 
+const path = require('path')
+const fs = require('fs')
+const walk = require('fs-walk')
+const defaultThemesDir = `${__dirname}/../node_modules/reveal.js/css/theme/`
+let model = {}
+
 /**
  * Build a model for scooch, it will contain themes, templates and possible slides.
  */
@@ -44,12 +50,6 @@ module.exports = {
   transitions: transitions,
   slides: slides
 }
-var path = require('path'),
-  fs = require('fs'),
-  walk = require('fs-walk'),
-  defaultThemesDir = `${__dirname}/../node_modules/reveal.js/css/theme/`
-
-var model = {}
 
 /**
  * Get the default reveal.js themes

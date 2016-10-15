@@ -59,7 +59,21 @@
   "standard": {
     "env": {
       "mocha": true
-    }
+    },
+    "ignore": [
+      "**/out/",
+      "assets/plugins/**",
+      "node_modules/**"
+    ],
+    "globals": [
+      "angular",
+      "module",
+      "inject",
+      "expect",
+      "spyOn",
+      "hljs",
+      "QueryString"
+    ]
   },
   "dependencies": {
     "angular": "^1.5.8",
