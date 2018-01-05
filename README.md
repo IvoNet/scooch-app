@@ -91,3 +91,8 @@ TODO
 # Special thanks
 
 * Timothy for your Icons ;-)
+
+
+## Note 
+this project is not finished yet! and gets my attention again when I need somthing else working.
+I'm hoping to present about this tool in the future, so it might even get finished... :-)
